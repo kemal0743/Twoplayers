@@ -26,7 +26,7 @@ namespace Twoplayers.Player
         internal float _rotSpeed = 80f;
         private float dashSpeed = 20;
         private float dashDuration = 0.5f;
-        private bool isDashing;
+        private bool isDashing = false;
 
         private void Update()
         {
