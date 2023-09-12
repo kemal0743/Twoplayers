@@ -9,12 +9,14 @@ public class RaycastControlers : MonoBehaviour
     private float distance = 10;
     private float speed =30;
 
-    Enamycontrolers enamycontrolers;
-  
+    private GameObject enamys;
+    private GameObject player;
+
 
     private void Start()
     {
-        enamycontrolers = new Enamycontrolers();
+        enamys = GameObject.Find("enamy");
+        player = GameObject.Find("Player");
       
     }
     public void RayCast()
@@ -27,20 +29,21 @@ public class RaycastControlers : MonoBehaviour
             Debug.DrawLine(transform.position, hit.point, Color.red);
             if (hit.collider.tag == "Player")
             {
-
-                enamycontrolers.GoEnamy();
+                enamys.transform.position = Vector2.Lerp(enamys.transform.position, player.transform.position, 10 * Time.deltaTime);
             }
 
         }
         else
         {
-            Debug.Log("what dedim");
+           
             Debug.DrawLine(transform.position, transform.position + transform.right * distance, Color.green);
         }
 
     }
+  
     private void Update()
     {
         RayCast();
+       
     }
 }

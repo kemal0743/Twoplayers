@@ -5,24 +5,24 @@ namespace Twoplayers.Player
 {
     public class DashControlers : MonoBehaviour
     {
-        //float _kuvvet = 15f; 
-        private bool isDashing;
-        private float dashDuration = 0.5f;
-        private float dashSpeed = 50f;
+        ////float _kuvvet = 15f; 
+        //private bool isDashing;
+        //private float dashDuration = 0.5f;
+        //private float dashSpeed = 50f;
 
-        Rigidbody2D rbs;
-        JoistickControlers _jcontrol;
+        //Rigidbody2D rbs;
+        //JoistickControlers _jcontrol;
 
-        //scripst eriþim
+        ////scripst eriþim
 
 
-        void Start()
-        {
+        //void Start()
+        //{
            
-           _jcontrol = new JoistickControlers();
-            rbs = GetComponent<Rigidbody2D>();
+        //   _jcontrol = new JoistickControlers();
+        //    rbs = GetComponent<Rigidbody2D>();
             
-        }
+        //}
         
         
        

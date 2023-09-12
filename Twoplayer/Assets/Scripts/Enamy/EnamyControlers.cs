@@ -13,10 +13,13 @@ namespace Twoplayers.Enamy
 
         [SerializeField] GameObject _tarretPanel;
 
-        
+        private void Start()
+        {
+            _player = GameObject.Find("Player");
+        }
 
         [Header(" takip etme hýzý ")]
-        float _Speed = 3f;
+        float _Speed = 2f;
 
         [Header("belirlenen mesafe")]
         [SerializeField] float distanceBetween;
@@ -34,13 +37,13 @@ namespace Twoplayers.Enamy
             if(_distance < distanceBetween ) 
             {
                Fallow();
-                //_tarretPanel.SetActive(false);
+                _tarretPanel.SetActive(false);
             }
             else 
             {
-                //_tarretPanel.SetActive(true);
+                _tarretPanel.SetActive(true);
 
-               GotoBack();
+                GotoBack();
 
             }
 
@@ -54,12 +57,7 @@ namespace Twoplayers.Enamy
         {
             transform.position = Vector2.Lerp(transform.position, Vector2.zero, 1f * Time.deltaTime);
         }
-        public void GoEnamy() 
-        {
-
-
-            transform.position = Vector2.Lerp(transform.position, _player.transform.position, 1f * Time.deltaTime);
-        }
+      
     }
 }
 
