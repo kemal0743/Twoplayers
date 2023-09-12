@@ -21,9 +21,10 @@ namespace Twoplayers.Player
         }
         // hýz deðiþkenlerim 
         internal float speed = 2f;
-        private float dashSpeed = 80;
-        private float dashDuration = 0.5f;
-        private bool isDashing = false;
+        private float _dashSpeed = 8;
+        private float _dashDuration = 0.5f;
+        private bool _isDashing;
+        private bool _isPres = false;
 
         private void Update()
         {
@@ -33,16 +34,12 @@ namespace Twoplayers.Player
             movement.y = Input.GetAxis("Vertical");/*joystick.Vertical;*/
             rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
 
+            if (_isPres == true)
+            {
 
+                StartCoroutine(Dashs());
 
-            //if(Input.GetKey(KeyCode.Space)) 
-            //{
-
-
-            //    StartCoroutine(Dashs());
-
-            //}
-
+            }
 
             // dash yapabilmek için haraket kodlarý yenilendi
             //_movement = new Vector3(movement.x, movement.y, 0);
@@ -56,19 +53,22 @@ namespace Twoplayers.Player
         }
         private IEnumerator Dashs()
         {
-            isDashing = true;
-            rb.velocity = new Vector2(movement.x * dashSpeed, movement.y * dashSpeed);
-            yield return new WaitForSeconds(dashDuration);
-            isDashing = false;
-
+            _isDashing = true;
+            rb.velocity = new Vector2(movement.x * _dashSpeed, movement.y * _dashSpeed);
+            yield return new WaitForSeconds(_dashDuration);
+            _isDashing = false;
         }
-        public void deneme() 
+        public void Pres() 
         {
 
-
-            rb.AddForce(transform.up * dashSpeed*100f);
+          _isPres = true;
         }
+        public void StopPres()
+        {
 
+            _isPres = false;
+        
+        }
 
     }
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Twoplayers.Player;
 using UnityEngine;
+using UnityEngine.UI;
+
 namespace Twoplayers.Enamy 
 {
 
@@ -13,13 +15,16 @@ namespace Twoplayers.Enamy
 
         [SerializeField] GameObject _tarretPanel;
 
+        [SerializeField] Text EnamyText;
+
         private void Start()
         {
             _player = GameObject.Find("Player");
+            EnamyText = _player.GetComponent<Text>();
         }
 
         [Header(" takip etme hýzý ")]
-        float _Speed = 2f;
+        float _Speed = 0.1f;
 
         [Header("belirlenen mesafe")]
         [SerializeField] float distanceBetween;
@@ -57,7 +62,16 @@ namespace Twoplayers.Enamy
         {
             transform.position = Vector2.Lerp(transform.position, Vector2.zero, 1f * Time.deltaTime);
         }
-      
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.collider.tag == ("Wall")) 
+            {
+
+                
+            
+            }
+                
+        }
     }
 }
 

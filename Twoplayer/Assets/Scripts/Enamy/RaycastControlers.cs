@@ -25,7 +25,7 @@ public class RaycastControlers : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position,transform.right,distance);
         if (hit.collider != null)
         {
-            Debug.Log("koþul gerçekleþmedi");
+            
             Debug.DrawLine(transform.position, hit.point, Color.red);
             if (hit.collider.tag == "Player")
             {
